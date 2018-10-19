@@ -15,8 +15,6 @@ typedef enum {
   GP_TAKE_PICTURE = 1,
   GP_POWER_ON = 2,
   GP_POWER_OFF = 3
-  //GOPRO_STATUS = "http://10.5.5.9/bacpac/sx?t={password}",
-  //GOPRO_TAKE_PICTURE = "http://10.5.5.9/bacpac/SH?t={password}&p=%01"
 } gopro_commands_t;
 
 class GoPro_WiFi

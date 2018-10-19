@@ -4,8 +4,6 @@
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
 
-// const string GoPro_WiFi::GP_STATUS = "http://10.5.5.9/bacpac/sx?t={password}";
-
 GoPro_WiFi::GoPro_WiFi(char* SSID, char* password)
 {
     _SSID = SSID;
@@ -25,17 +23,25 @@ void GoPro_WiFi::connect()
     Serial.println("Added SSID: " + String(_SSID));
 }
 
+int GoPro_WiFi::command(gopro_commands_t commandID)
+{
+    return command(_commands[commandID]);
+}
+
 int GoPro_WiFi::command(String command)
 {
     HTTPClient http;
 
+    // if command requires authentication, use stored password
     if(command.indexOf("{password}") != -1){
         command.replace("{password}", _password);
     }
 
+    // debug purposes
     Serial.print("Command: ");
     Serial.println(command);
 
+    // try connection
     if (http.begin(command)) {
         int httpCode = http.GET();
 
@@ -45,11 +51,6 @@ int GoPro_WiFi::command(String command)
     } else {
         Serial.println("http error!");
     }
-}
-
-int GoPro_WiFi::command(gopro_commands_t commandID)
-{
-    return command(_commands[commandID]);
 }
 
 wl_status_t GoPro_WiFi::status()
