@@ -5,6 +5,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
+#include <GoPro_Constants.h>
 
 typedef enum {
     ACTION_POWER_ON = 1
