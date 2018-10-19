@@ -3,6 +3,10 @@ Arduino Library to remote control a GoPro Camera using a WiFi connection (ESP826
 
 **Warning!!! This is still in early alpha, not usable yet**
 
+## Requirements ##
+- GoPro (Hero3+)
+- ESP8266 chip
+
 ## Functions ##
 - [x] Detect Camera Power State
 - [x] Camera Power On
