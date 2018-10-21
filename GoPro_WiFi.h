@@ -6,6 +6,7 @@
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
 #include <GoPro_Constants.h>
+#include <EventManager.h>
 
 typedef enum {
     ACTION_POWER_ON = 1
@@ -21,17 +22,19 @@ typedef enum {
 class GoPro_WiFi
 {
   public:
-    GoPro_WiFi(char* SSID, char* password);
+    GoPro_WiFi(char* _SSID, char* password);
     void connect();
     wl_status_t status();
     int command(String command);
     int command(gopro_commands_t command);
     ESP8266WiFiClass WiFi;
     ESP8266WiFiMulti WiFiMulti;
+    char* SSID;
   private:
-    char* _SSID;
     char* _password;
     String _commands[10];
 };
+
+extern GoPro_WiFi GoPro;
 
 #endif

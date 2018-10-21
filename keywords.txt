@@ -1,0 +1,5 @@
+GoPro_Wifi	KEYWORD1
+
+command	KEYWORD2
+
+SSID	LITERAL1        

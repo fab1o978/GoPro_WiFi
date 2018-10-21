@@ -4,9 +4,9 @@
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
 
-GoPro_WiFi::GoPro_WiFi(char* SSID, char* password)
+GoPro_WiFi::GoPro_WiFi(char* _SSID, char* password)
 {
-    _SSID = SSID;
+    SSID = _SSID;
     _password = password;
 
     _commands[GP_STATUS] =  "http://10.5.5.9/camera/sx?t={password}";
@@ -18,9 +18,9 @@ GoPro_WiFi::GoPro_WiFi(char* SSID, char* password)
 void GoPro_WiFi::connect()
 {
     WiFi.mode(WIFI_STA);
-    WiFiMulti.addAP(_SSID, _password);
+    WiFiMulti.addAP(SSID, _password);
 
-    Serial.println("Added SSID: " + String(_SSID));
+    Serial.println("Added SSID: " + String(SSID));
 }
 
 int GoPro_WiFi::command(gopro_commands_t commandID)
