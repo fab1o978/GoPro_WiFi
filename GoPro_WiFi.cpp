@@ -3,11 +3,13 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
+#include <GoPro_Constants.h>
 
 GoPro_WiFi::GoPro_WiFi(char* _SSID, char* password)
 {
     SSID = _SSID;
     _password = password;
+    _status = STATE_WAITING_CONNECTION;
 
     _commands[GP_STATUS] =  "http://10.5.5.9/camera/sx?t={password}";
     _commands[GP_POWER_ON] =  "http://10.5.5.9/bacpac/PW?t={password}&p=%01";

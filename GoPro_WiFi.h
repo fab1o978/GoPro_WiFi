@@ -33,6 +33,7 @@ class GoPro_WiFi
   private:
     char* _password;
     String _commands[10];
+    int _status;
 };
 
 extern GoPro_WiFi GoPro;
